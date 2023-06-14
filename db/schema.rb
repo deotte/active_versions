@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_14_002727) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_14_012341) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "customer_versions", force: :cascade do |t|
+    t.integer "support_level", default: 0
+    t.integer "rating", default: 0
+    t.integer "billing_strategy", default: 0
+    t.integer "billing_provider", default: 0
+    t.string "currency"
+    t.string "language"
+    t.boolean "two_fa_active"
+    t.boolean "sso_active"
+    t.string "promo_code"
+    t.string "primary_contact"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.index ["customer_id"], name: "index_customer_versions_on_customer_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.integer "support_level", default: 0
@@ -29,4 +45,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_002727) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "customer_versions", "customers"
 end
