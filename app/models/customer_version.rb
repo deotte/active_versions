@@ -1,3 +1,3 @@
-class CustomerVersion < Customer
+class CustomerVersion < ApplicationRecord
   belongs_to :customer
 end

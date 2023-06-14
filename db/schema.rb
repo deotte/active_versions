@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_14_012341) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_14_165125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "customer_versions", force: :cascade do |t|
-    t.integer "support_level", default: 0
-    t.integer "rating", default: 0
-    t.integer "billing_strategy", default: 0
-    t.integer "billing_provider", default: 0
+    t.string "support_level", limit: 40, default: "0"
+    t.string "rating", limit: 40, default: "0"
+    t.string "billing_strategy", limit: 40, default: "0"
+    t.string "billing_provider", default: "0"
     t.string "currency"
     t.string "language"
     t.boolean "two_fa_active"
@@ -27,14 +27,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_012341) do
     t.string "primary_contact"
     t.bigint "customer_id"
     t.datetime "created_at", null: false
+    t.string "name"
     t.index ["customer_id"], name: "index_customer_versions_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
-    t.integer "support_level", default: 0
-    t.integer "rating", default: 0
-    t.integer "billing_strategy", default: 0
-    t.integer "billing_provider", default: 0
+    t.string "support_level", limit: 40, default: "0"
+    t.string "rating", limit: 40, default: "0"
+    t.string "billing_strategy", limit: 40, default: "0"
+    t.string "billing_provider", default: "0"
     t.string "currency"
     t.string "language"
     t.boolean "two_fa_active"
@@ -43,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_012341) do
     t.string "primary_contact"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   add_foreign_key "customer_versions", "customers"
