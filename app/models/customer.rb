@@ -3,6 +3,8 @@ class Customer < ApplicationRecord
 
   has_many :customer_versions, dependent: :destroy
 
+  NON_VERSIONED_ATTRIBUTES = %w[name language].freeze
+
   SUPPORT_LEVELS = %w[free pro enterprise].freeze
   RATINGS = %w[aaa aa a b].freeze
   BILLING_STRATEGIES = %w[yearly quarterly biweekly].freeze
