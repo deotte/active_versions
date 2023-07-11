@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: %i[ show edit update destroy ]
+  before_action :set_customer, only: %i[show edit update destroy]
+  before_action :set_customer_select_options, only: %i[new edit]
 
   # GET /customers or /customers.json
   def index
@@ -13,6 +14,8 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
+    # flash.now[:success] = "You are the best user this site has ever seen"
+    # flash.now[:error] = "Actually just kidding you're a terrible user come to think of it"
   end
 
   # GET /customers/1/edit
@@ -65,6 +68,13 @@ class CustomersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.fetch(:customer, {})
+      params.require(:customer).permit(:primary_contact, :support_level, :rating, :billing_strategy, :billing_provider, :currency, :language, :promo_code, :in_setup, :two_fa_active)
+    end
+
+    def set_customer_select_options
+      @support_level_options = Customer::SUPPORT_LEVELS
+      @rating_options = Customer::RATINGS
+      @billing_strategy_options = Customer::BILLING_STRATEGIES
+      @billing_provider_options = Customer::BILLING_PROVIDERS
     end
 end

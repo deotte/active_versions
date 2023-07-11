@@ -8,12 +8,23 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round" rel="stylesheet">
+     <script>
+      // tailwind.config = {
+      //   theme: {
+      //     extend: {
+      //       colors: {
+      //         clifford: '#da373d',
+      //       }
+      //     }
+      //   }
+      // }
+    </script>
   </head>
-
   <body>
     <%= render "shared/nav" %>
+    <%= render "shared/flash" %>
     <%= yield %>
   </body>
 </html>

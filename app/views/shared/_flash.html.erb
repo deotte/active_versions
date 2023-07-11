@@ -1,0 +1,11 @@
+<% if flash[:success] || flash[:error] %>
+  <div class="toasts fixed bottom-8 right-8 flex flex-col justify-items-start space-y-4">
+    <% if flash[:success] %>
+      <div class="success-toast border-2 border-l-8 border-solid border-green-700 shadow-md rounded-md p-4"><%= success %></div>
+    <% end %>
+
+    <% if flash[:error] %>
+      <div class="error-toast border-2 border-l-8 border-solid border-red-700 shadow-md rounded-md p-4"><%= error %></div>
+    <% end %>
+  </div>
+<% end %>

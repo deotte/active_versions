@@ -1,0 +1,9 @@
+<div class="input flex flex-col mt-4 w-full md:<%= width %> ">
+  <%= form_obj.label "#{key}".to_sym, class: "mb-1" %>
+
+  <% if placeholder.nil? %>
+    <%= form_obj.text_field "#{key}".to_sym, { class: "rounded-lg border-1 border-solid border-slate-300 shadow-inner" } %>
+  <% else %>
+    <%= form_obj.text_field "#{key}".to_sym, { class: "rounded-lg border-1 border-solid border-slate-300 shadow-inner", placeholder: "123456ab,987ghxy" } %>
+  <% end %>
+</div>
