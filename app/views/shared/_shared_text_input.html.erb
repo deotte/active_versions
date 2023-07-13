@@ -1,9 +1,24 @@
 <div class="input flex flex-col mt-4 w-full md:<%= width %> ">
-  <%= form_obj.label "#{key}".to_sym, class: "mb-1" %>
+  <% symbol_key = "#{key}".to_sym %>
+  <% css_class = "w-full rounded-lg border-1 border-solid shadow-inner" %>
+
+  <% if customer_obj.errors&.include?(symbol_key) %>
+    <% css_class += " border-red-500" %>
+  <% else %>
+    <% css_class += " border-slate-300" %>
+  <% end %>
+
+  <%= form_obj.label symbol_key, class: "mb-1" %>
 
   <% if placeholder.nil? %>
-    <%= form_obj.text_field "#{key}".to_sym, { class: "rounded-lg border-1 border-solid border-slate-300 shadow-inner" } %>
+    <%= form_obj.text_field symbol_key, { class: css_class } %>
   <% else %>
-    <%= form_obj.text_field "#{key}".to_sym, { class: "rounded-lg border-1 border-solid border-slate-300 shadow-inner", placeholder: "123456ab,987ghxy" } %>
+    <%= form_obj.text_field symbol_key, { class: css_class, placeholder: placeholder } %>
+  <% end %>
+
+  <% if customer_obj.errors&.include?(symbol_key) %>
+    <% customer_obj.errors.full_messages_for(symbol_key).each do |error| %>
+      <span class="mt-2 text-red-500"><%= error %></span>
+    <% end %>
   <% end %>
 </div>

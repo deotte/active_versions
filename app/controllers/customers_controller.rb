@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: %i[show edit update destroy]
-  before_action :set_customer_select_options, only: %i[new edit]
+  before_action :set_customer_select_options, only: %i[new edit create update]
 
   # GET /customers or /customers.json
   def index

@@ -1,46 +1,22 @@
-<%= form_with model: customer, class: "container px-4 flex flex-col" do |form| %>
-  <!--
-  <% if customer.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-
-      <ul>
-        <% customer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  -->
+<%= form_with model: customer, class: "container px-4 flex flex-col justify-center" do |form| %>
   <h2 class="text-xl mb-2">Primary Information</h2><hr class="w-full md:w-96">
-
-  <%= shared_text_input(form, "primary_contact", "w-96") %>
-
+  <%= shared_text_input(form, customer, "name", "w-96") %>
+  <%= shared_text_input(form, customer, "primary_contact", "w-96") %>
   <%= shared_select_box(form, "support_level", @support_level_options) %>
   <%= shared_select_box(form, "rating", @rating_options) %>
   <%= shared_select_box(form, "billing_strategy", @billing_strategy_options) %>
   <%= shared_select_box(form, "billing_provider", @billing_provider_options) %>
-
-  <%= shared_text_input(form, "currency", "w-64") %>
-  <%= shared_text_input(form, "language", "w-80") %>
-  <%= shared_text_input(form, "promo_code", "w-96", "123456ab,987ghxy") %>
+  <%= shared_text_input(form, customer, "currency", "w-64") %>
+  <%= shared_text_input(form, customer, "language", "w-80") %>
+  <%= shared_text_input(form, customer, "promo_code", "w-96", "123456ab,987ghxy") %>
 
   <h2 class="text-xl mt-4 mb-2">Setup Information</h2><hr class="w-full md:w-96">
+  <%= shared_checkbox_input(form, "in_setup", "Customer is in setup mode") %>
+  <%= shared_checkbox_input(form, "two_fa_active", "Customer has Two Factor Authentication") %>
 
-  <div class="input flex mb-1 mt-4 w-full md:w-96 justify-between items-center">
-    <%= form.label :in_setup, "Customer is in setup mode" %>
-    <%= form.check_box :in_setup %>
-  </div>
-  <hr class="w-full md:w-96">
-
-  <div class="input flex mb-1 mt-4 w-full md:w-96 justify-between items-center">
-    <%= form.label :two_fa_active, "Customer has Two Factor Authentication" %>
-    <%= form.check_box :two_fa_active %>
-  </div>
-  <hr class="w-full md:w-96">
-
-  <div class="input flex mt-8 mb-4 w-80 justify-between items-center">
-    <%= link_to "Cancel", customers_path, class: "px-4 py-2 rounded-full border-2 border-solid border-slate-300 hover:shadow-md" %>
-    <%= form.submit "Update Customer", class: "px-4 py-2 rounded-full border-2 border-solid border-green-700 hover:bg-green-700 hover:text-white hover:cursor-pointer" %>
+  <div class="input flex mt-8 mb-4 w-80 items-center">
+    <%= link_to "Cancel", customers_path, class: "px-4 py-2 rounded-lg border-2 border-solid border-slate-300 hover:shadow-md" %>
+    <% submit_text = customer.new_record? ? "Create Customer" : "Update Customer" %>
+    <%= form.submit submit_text, class: "ml-4 px-4 py-2 rounded-lg border-2 border-solid border-green-700 hover:bg-green-700 hover:text-white hover:cursor-pointer" %>
   </div>
 <% end %>

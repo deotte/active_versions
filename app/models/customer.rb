@@ -15,5 +15,7 @@ class Customer < ApplicationRecord
   validates :billing_strategy, inclusion: { in: BILLING_STRATEGIES }, if: -> { !in_setup }
   validates :billing_provider, inclusion: { in: BILLING_PROVIDERS }, if: -> { !in_setup }
 
+  validates :name, :primary_contact, presence: true
+
   after_commit -> { create_versioned_record(self) }, if: :persisted?, on: [:update]
 end
