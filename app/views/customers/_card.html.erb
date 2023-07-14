@@ -1,21 +1,23 @@
-<div class="w-96 h-48 m-4 border border-solid border-slate-300 drop-shadow rounded-lg flex flex-col">
+<div class="w-96 h-48 m-4 border-2 border-solid border-slate-300 drop-shadow rounded-lg flex flex-col">
   <div class="header w-full bg-slate-200 h-2/5 flex flex-row items-center px-4">
     <div class="w-12 h-12 flex flex-row items-center justify-center border-solid bg-white rounded-lg">
       <span class="material-icons-round text-green-500">token</span>
     </div>
     <h2 class="ml-4"><%= customer.name %></h2>
-    <%= link_to edit_customer_path(customer), class: "ml-auto flex flex-row items-center justify-center" do %>
-      <span class="material-icons-round text-slate-600">settings</span>
-    <% end %>
+    <div class="ml-auto flex flex-row">
+      <%= link_to edit_customer_path(customer), class: "flex flex-row items-center" do %>
+        <span class="material-icons-round text-slate-600">settings</span>
+      <% end %>
+      <%= link_to customer_path(customer), class: "flex flex-row items-center ml-2" do %>
+        <span class="material-icons-round text-slate-600">open_in_new</span>
+      <% end %>
+    </div>
   </div>
   <div class="content w-full flex-grow flex flex-col items-center justify-around px-4">
     <div class="billing w-full flex flex-row items-center justify-between">
       <span class="font-light text-slate-700">Billing Strategy</span>
-      <% if customer.billing_strategy.empty? %>
-        <span>Not set</span>
-      <% else %>
-        <span><%= customer.billing_strategy %></span>
-      <% end %>
+      <% billing_strategy_text = customer.billing_strategy.empty? ? "Not set" : customer.billing_strategy %>
+      <span><%= billing_strategy_text %></span>
     </div>
     <div class="two-fa w-full flex flex-row items-center justify-between">
       <span class="font-light text-slate-700">2FA Status</span>

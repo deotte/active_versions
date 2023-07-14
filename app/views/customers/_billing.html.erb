@@ -1,0 +1,32 @@
+  <div class="w-full lg:w-96 border-2 border-solid border-slate-300 rounded-lg items-center">
+    <h2 class="text-xl mt-4 mb-4 px-4">Billing Information</h2>
+    <hr class="w-full">
+    <div class="mt-4 flex justify-between items-center px-4">
+      <h3 class="font-light text-slate-700">Currency</h3>
+      <% currency_text = customer.currency.empty? ? "Not set" : customer.currency %>
+      <span><%= currency_text %></span>
+    </div>
+    <div class="mt-4 flex justify-between items-center px-4">
+      <h3 class="font-light text-slate-700">Billing Strategy</h3>
+      <% billing_strategy_text = customer.billing_strategy.empty? ? "Not set" : customer.billing_strategy %>
+      <span><%= billing_strategy_text.capitalize %></span>
+    </div>
+    <div class="mt-4 flex justify-between items-center px-4">
+      <h3 class="font-light text-slate-700">Billing Provider</h3>
+      <% billing_provider_text = customer.billing_provider.empty? ? "Not set" : customer.billing_provider %>
+      <span><%= billing_provider_text.capitalize %></span>
+    </div>
+    <div class="mt-4 flex justify-between items-center px-4">
+      <h3 class="font-light text-slate-700">Customer Status</h3>
+      <% if customer.in_setup? %>
+        <span class="bg-orange-300 px-3 border border-solid rounded-lg">Onboarding</span>
+      <% else %>
+        <span class="bg-green-300 px-3 border border-solid rounded-full">Setup Complete</span>
+      <% end %>
+    </div>
+    <hr class="w-full mt-4">
+    <div class="mt-4 mb-4 flex justify-end items-center px-4">
+      <h3>Download Invoices</h3>
+      <span class="material-icons-round text-blue-400 ml-2 hover:cursor-pointer">cloud_download</span>
+    </div>
+  </div>

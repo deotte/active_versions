@@ -1,0 +1,24 @@
+  <div class="w-full lg:w-96 lg:ml-8 lg:mr-8 border-2 border-solid border-slate-300 rounded-lg items-center">
+    <h2 class="text-xl mt-4 mb-4 px-4">Authentication Settings</h2>
+    <hr class="w-full">
+    <div class="mt-4 flex justify-between items-center px-4">
+      <h3 class="font-light text-slate-700">Login Method</h3>
+      <span>SSO</span>
+    </div>
+    <div class="mt-4 flex justify-between items-center px-4">
+      <h3 class="font-light text-slate-700">Login Provider</h3>
+      <span>Okta</span>
+    </div>
+    <div class="mt-4 flex justify-between items-center px-4">
+      <h3 class="font-light text-slate-700">Timeout</h3>
+      <span>1 hour</span>
+    </div>
+    <div class="mt-4 mb-4 flex justify-between items-center px-4">
+      <h3 class="font-light text-slate-700">2FA Status</h3>
+      <% if customer.two_fa_active? %>
+        <span class="bg-green-300 px-3 border border-solid rounded-full">Active</span>
+      <% else %>
+        <span class="bg-red-300 px-3 border border-solid rounded-lg">Not Active</span>
+      <% end %>
+    </div>
+  </div>

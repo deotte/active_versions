@@ -1,8 +1,17 @@
-<%= render @customer %>
+<% content_for :title, "#{@customer.name}" %>
 
-<div>
-  <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
-  <%= link_to "Back to customers", customers_path %>
-
-  <%= button_to "Destroy this customer", @customer, method: :delete %>
+<div class="w-full h-16 shadow-inner flex flex-row items-center justify-between px-4 border-b-2 border-solid mb-4">
+  <h2 class="text-2xl"><%= @customer.name %></h1>
+  <div class="h-full flex justify-center items-center">
+    <%= link_to "Edit", edit_customer_path(@customer), class: "py-2 px-4 border-2 border-solid border-slate-300 rounded-lg inner-shadow" %>
+    <%= link_to "Back", customers_path, class: "ml-2 py-2 px-4 border-2 border-solid border-slate-300 rounded-lg inner-shadow" %>
+  </div>
 </div>
+
+<div class="w-full mt-4 mb-4 px-4 border-1 border-solid border-slate-300 rounded-lg flex flex-col lg:flex-row lg:flex-wrap space-y-4">
+  <%= render "billing", customer: @customer %>
+  <%= render "authentication", customer: @customer %>
+  <%= render "ecommerce", customer: @customer %>
+</div>
+
+<%# <%= button_to "Destroy this customer", @customer, method: :delete %>

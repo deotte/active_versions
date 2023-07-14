@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: %i[show edit update destroy]
+  before_action :set_customer, only: %i[edit update destroy]
   before_action :set_customer_select_options, only: %i[new edit create update]
 
   # GET /customers or /customers.json
@@ -9,6 +9,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1 or /customers/1.json
   def show
+    @customer = Customer.includes(:customer_versions).find(params[:id])
   end
 
   # GET /customers/new
@@ -68,7 +69,7 @@ class CustomersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.require(:customer).permit(:primary_contact, :support_level, :rating, :billing_strategy, :billing_provider, :currency, :language, :promo_code, :in_setup, :two_fa_active)
+      params.require(:customer).permit(:name, :primary_contact, :support_level, :rating, :billing_strategy, :billing_provider, :currency, :language, :promo_code, :in_setup, :two_fa_active)
     end
 
     def set_customer_select_options

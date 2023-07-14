@@ -1,3 +1,5 @@
+<% content_for :title, "Edting #{@customer.name}" %>
+
 <div class="w-full h-16 shadow-inner flex flex-row items-center justify-between px-4 border-b-2 border-solid mb-4">
   <h2 class="text-2xl"><%= @customer.name %></h1>
   <%= link_to "Back", customers_path, class: "py-2 px-4 border-2 border-solid border-slate-300 rounded-lg inner-shadow" %>
