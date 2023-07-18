@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 /* Rules for sizing the icon. */
 .material-icons.md-18 {
   font-size: 18px;
@@ -46,4 +47,18 @@
 
 .material-icons.md-light.md-inactive {
   color: rgba(255, 255, 255, 0.3);
+}
+
+/* Hide on mobile. TailwindCSS is not cooperating with built-ins here */
+@media only screen and (max-width: 768px) {
+  /* .hide-mobile {
+    display: none;
+  } */
+}
+
+/* Hide on large screens. TailwindCSS is not cooperating with built-ins here */
+@media only screen and (min-width: 768px) {
+  /* .hide-lg {
+    display: none;
+  } */
 }

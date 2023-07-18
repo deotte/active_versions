@@ -17,6 +17,6 @@
   <div class="input flex mt-8 mb-4 w-80 items-center">
     <%= link_to "Cancel", customers_path, class: "px-4 py-2 rounded-lg border-2 border-solid border-slate-300 hover:shadow-md" %>
     <% submit_text = customer.new_record? ? "Create Customer" : "Update Customer" %>
-    <%= form.submit submit_text, class: "ml-4 px-4 py-2 rounded-lg border-2 border-solid border-green-700 hover:bg-green-700 hover:text-white hover:cursor-pointer" %>
+    <%= form.submit submit_text, class: "ml-4 px-4 py-2 rounded-lg border-2 border-solid border-blue-400 hover:bg-blue-400 hover:text-white hover:cursor-pointer hover:shadow-md" %>
   </div>
 <% end %>

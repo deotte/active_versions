@@ -8,10 +8,12 @@
   </div>
 </div>
 
-<div class="w-full mt-4 mb-4 px-4 border-1 border-solid border-slate-300 rounded-lg flex flex-col lg:flex-row lg:flex-wrap space-y-4">
+<div class="w-full mt-4 px-4 cards space-y-4">
   <%= render "billing", customer: @customer %>
   <%= render "authentication", customer: @customer %>
   <%= render "ecommerce", customer: @customer %>
 </div>
+
+<%= render "versions", versions: @customer.customer_versions %>
 
 <%# <%= button_to "Destroy this customer", @customer, method: :delete %>

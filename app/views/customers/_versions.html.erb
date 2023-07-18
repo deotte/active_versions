@@ -1,0 +1,33 @@
+<div class="w-full lg:max-w-prose px-4 mt-4 mb-4">
+  <h2 class="text-xl">Previous Versions</h2>
+  <hr class="w-full mt-2 mb-4">
+
+  <% if versions.empty? %>
+    <span class="font-light text-slate 700">No previous versions found</span>
+  <% else %>
+    <% versions.each do |version| %>
+      <div class="w-full border-2 border-solid border-slate-300 rounded-lg items-center mt-4 px-4 py-4">
+        <div class="w-full h-4 flex justify-end items-center">
+          <span><%= version.created_at.strftime("%b %d, %Y") %>
+        </div>
+        <ul class="list-disc pl-4">
+        <% version.attributes.each do |key, value| %>
+          <% next if key == "created_at" || key == "id" || key == "customer_id" || value.nil? %>
+          <li>
+            <span class="font-light text-slate-700">Changed <%= key %> to </span> <%= value %></b>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if !versions.empty? %>
+    <div class="mt-4 mb-4 flex justify-end items-center">
+      <button class="py-2 px-4 bg-blue-400 rounded-lg inner-shadow text-white hover:shadow-lg flex items-center justify-between">
+        Export Report
+        <span class="material-icons-round text-white ml-2 hover:cursor-pointer">cloud_download</span>
+      </button>
+    </div>
+  <% end %>
+</div>
