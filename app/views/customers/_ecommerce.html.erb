@@ -5,6 +5,11 @@
       <h3 class="font-light text-slate-700">Primary Contact</h3>
       <span><%= customer.primary_contact&.truncate(27) %></span>
     </div>
+    <div class="mt-4 flex items-center justify-between px-4">
+      <span class="font-light text-slate-700">Language</span>
+      <% language_text = customer.language.empty? ? "Not set" : customer.language.capitalize %>
+      <span><%= language_text %></span>
+    </div>
     <div class="mt-4 flex justify-between items-center px-4">
       <h3 class="font-light text-slate-700">Promo Code</h3>
       <% promo_text = (customer.promo_code.nil? || customer.promo_code.empty?) ? "Not set" : customer.promo_code %>
@@ -23,6 +28,6 @@
     <hr class="w-full mt-4">
     <div class="flex justify-end items-center p-4">
       <h3>Contact Support</h3>
-      <span class="material-icons-round text-blue-400 ml-2 hover:cursor-pointer">mail</span>
+      <span class="material-icons-round text-blue-400 ml-2 hover:cursor-pointer hover:shadow-lg">mail</span>
     </div>
   </div>

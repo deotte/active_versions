@@ -1,4 +1,5 @@
 <nav class="w-full h-20 px-4 border-b-2 border-solid border-slate-200 max-md:hidden md:flex flex-row items-center justify-between">
+  <h2 class="font-serif text-blue-500 text-xl pb-1 border-b-2 border-solid border-blue-400">AV</h2>
   <div class="flex flex-row items-center justify-between w-96 h-full">
     <%# <%= image_tag ("av_logo.png"), class: "h-full"%>
     <%= render "shared/tw_link", path: customers_path, text: "Customers" %>
@@ -6,10 +7,33 @@
     <%= render "shared/tw_link", path: "", text: "Projects" %>
     <%= render "shared/tw_link", path: "", text: "Settings" %>
   </div>
-  <div class="flex flex-row w-80 items-center justify-end h-full">
-    <%= render "shared/tw_link", path: "", text: "Sign In" %>
+</nav>
+
+<nav class="flex flex-col md:hidden w-full">
+  <div class="mobile-top p-4 flex items-center justify-between">
+    <h2 class="font-serif text-blue-500 text-xl pb-1 border-b-2 border-solid border-blue-400">AV</h2>
+    <button class="flex items-center" onClick="openOrCloseMenu()">
+      <span class="material-icons-round">menu</span>
+    </button>
+  </div>
+  <div class="flex-col w-full hidden" id="mobile-links">
+    <%= render "shared/mobile_link", path: customers_path, text: "Customers" %>
+    <%= render "shared/mobile_link", path: "", text: "Orders" %>
+    <%= render "shared/mobile_link", path: "", text: "Projects" %>
+    <%= render "shared/mobile_link", path: "", text: "Settings" %>
   </div>
 </nav>
 
-<nav class="flex md:hidden w-full h-16 bg-blue-400 px-4">
-</nav>
+<script>
+  function openOrCloseMenu() {
+    const mobileMenuEl = document.querySelector('#mobile-links');
+
+    if (mobileMenuEl.matches('.hidden')) {
+      mobileMenuEl.classList.remove('hidden');
+      mobileMenuEl.classList.add('flex');
+    } else {
+      mobileMenuEl.classList.add('hidden');
+      mobileMenuEl.classList.remove('flex');
+    }
+  }
+</script>
