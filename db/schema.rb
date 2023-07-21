@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_14_194334) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_21_144511) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,8 +39,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_194334) do
     t.string "billing_provider", default: ""
     t.string "currency"
     t.string "language"
-    t.boolean "two_fa_active"
-    t.boolean "sso_active"
+    t.boolean "two_fa_active", default: false
+    t.boolean "sso_active", default: false
     t.string "promo_code"
     t.string "primary_contact"
     t.datetime "created_at", null: false

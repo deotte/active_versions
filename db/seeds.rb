@@ -1,10 +1,5 @@
-Customer.create!(name: "Caspian Corporation", language: "english", currency: "usd")
-Customer.create!(name: "Phantom Incorporated", language: "english", currency: "gbp")
-Customer.create!(name: "Rogue Limited", language: "spanish", currency: "euro")
-Customer.create(name: "Built by Otters", language: "german", currency: "euro")
-Customer.create!(name: "Crazy Coffee Company", language: "french", currency: "euro")
-Customer.create!(name: "Brigsby Bread Company", language: "dutch", currency: "euro")
-Customer.create!(name: "Skywalker Sneakers", language: "english", currency: "cad")
-Customer.create!(name: "Bartlebee Books", language: "english", currency: "usd")
-Customer.create(name: "Clives Clementines", language: "spanish", currency: "peso")
-Customer.create!(name: "Leonards Limes", language: "spanish", currency: "usd")
+puts "Seeding customers..."
+load File.join(Rails.root, "db", "seeds", "customers.rb")
+
+puts "Seeding customer versions..."
+load File.join(Rails.root, "db", "seeds", "customer_versions.rb")
