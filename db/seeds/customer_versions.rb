@@ -1,5 +1,8 @@
 require 'Faker'
 
+CustomerVersion.destroy_all
+puts "Destroyed all customer versions"
+
 customer = Customer.find_by(name: "Caspian Corporation")
 puts "Found Caspian Corporation"
 

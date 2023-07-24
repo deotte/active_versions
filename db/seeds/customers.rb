@@ -1,5 +1,8 @@
 require 'faker'
 
+Customer.destroy_all
+puts "Destroyed all customers"
+
 CUSTOMER_NAMES = [
   "Caspian Corporation",
   "Phantom Incorporated",
