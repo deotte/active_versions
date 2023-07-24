@@ -1,4 +1,4 @@
-require 'Faker'
+require 'faker'
 
 CustomerVersion.destroy_all
 puts "Destroyed all customer versions"
