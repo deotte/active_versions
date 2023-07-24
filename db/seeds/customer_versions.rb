@@ -3,9 +3,6 @@ require 'Faker'
 customer = Customer.find_by(name: "Caspian Corporation")
 puts "Found Caspian Corporation"
 
-CustomerVersion.destroy_all
-puts "All customer versions deleted"
-
 3.times do |i|
   new_version = customer.customer_versions.new
 

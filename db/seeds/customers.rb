@@ -1,8 +1,5 @@
 require 'faker'
 
-Customer.destroy_all
-puts "All customers deleted"
-
 CUSTOMER_NAMES = [
   "Caspian Corporation",
   "Phantom Incorporated",
