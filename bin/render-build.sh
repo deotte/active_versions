@@ -6,4 +6,4 @@ bundle install
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
 
-bundle exec rails db:setup
+bundle exec rails db:migrate
