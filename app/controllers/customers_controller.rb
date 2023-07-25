@@ -15,8 +15,6 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
-    # flash.now[:success] = "You are the best user this site has ever seen"
-    # flash.now[:error] = "Actually just kidding you're a terrible user come to think of it"
   end
 
   # GET /customers/1/edit
@@ -29,7 +27,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to customer_url(@customer), notice: "Customer was successfully created." }
+        format.html { redirect_to customer_url(@customer), success: "Customer was successfully created." }
         format.json { render :show, status: :created, location: @customer }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +40,7 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to customer_url(@customer), notice: "Customer was successfully updated." }
+        format.html { redirect_to customer_url(@customer), success: "Customer was successfully updated." }
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,7 +54,7 @@ class CustomersController < ApplicationController
     @customer.destroy
 
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: "Customer was successfully destroyed." }
+      format.html { redirect_to customers_url, success: "Customer was successfully destroyed." }
       format.json { head :no_content }
     end
   end
